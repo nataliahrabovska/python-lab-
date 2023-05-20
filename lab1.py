@@ -1,37 +1,60 @@
 class Laptop:
-    instance = None
+    """створила клас Laptop, який представляє ноутбук з деякими характеристиками"""
+    __instance = None
 
     def __init__(self, model="Unknown", screen_size=15.6, ram=8, storage=256, battery_life=5):
-        self.__battery_level = None
-        self.__model = model
-        self.__screen_size = screen_size
-        self.__ram = ram
-        self.__storage = storage
-        self.__battery_life = battery_life
+        self.battery_level = None
+        self.model = model
+        self.screen_size = screen_size
+        self.ram = ram
+        self.storage = storage
+        self.battery_life = battery_life
+        """атрибути:
+        battery_level заряд батареї в відсотках
+        model модель ноутбука
+        screen_size розмір екрану
+        ram оперативна пам'ять в гігабайтах
+        storage кількість пам'яті в гігабайтвх
+        battery_life тривалість роботи в годинах
+        """
 
     def add_ram(self, value):
-        self.__ram += value
+        self.ram += value
+
+    """метод який збільшує обсяг оперативної пам'ять"""
 
     def add_storage(self, value):
-        self.__storage += value
+        self.storage += value
+
+    """метод який збільшує обсяг сховища"""
 
     def charge(self):
-        self.__battery_level = 100
+        self.battery_level = 100
+
+    """метод який встановлює поточний рівень заряду"""
 
     def __str__(self):
-        return f"Model: {self.__model}, Screen Size: {self.__screen_size}, RAM: {self.__ram}, Storage: {self.__storage}, " \
-               f"Battery Life: {self.__battery_life}"
+        return f"Model: {self.model}, Screen Size: {self.screen_size}, RAM: {self.ram}, Storage: {self.storage}, " \
+               f"Battery Life: {self.battery_life}"
+
+    """Повертає рядок, що представляє об'єкт класу Laptop у зрозумілому форматі."""
 
     @staticmethod
     def get_instance():
-        if not Laptop.instance:
-            Laptop.instance = Laptop()
-        return Laptop.instance
+        if not AbstractLaptop.__instance:
+            AbstractLaptop.__instance = AbstractLaptop()
+        return AbstractLaptop.__instance
+
+    """статичний метод який повертає екземпляр класу"""
 
 
-laptops = [Laptop() for i in range(4)]
-laptops[1] = Laptop("HP", 12.0, 16, 64, 3)
-laptops[2], laptops[3] = Laptop.get_instance(), Laptop.get_instance()
+ laptops = [AbstractLaptop(),
+           AbstractLaptop("HP", 12.0, 16, 64, 3),
+            AbstractLaptop.get_instance(), AbstractLaptop.get_instance()]
 
-for laptop in laptops:
-    print(laptop)
+ for laptop in laptops:
+     print(laptop)
+ """цикл, який виводить laptop зі списку laptops"""
+
+ numbers = [*range(1000, 2000, 100)]
+ print(numbers)
