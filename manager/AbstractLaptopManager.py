@@ -5,19 +5,44 @@ from models.Ultrabook import Ultrabook
 
 
 class AbstractLaptopManager:
+    """A class for managing a collection of laptops."""
+
     def __init__(self):
+        """Initialize the AbstractLaptopManager object."""
         self.laptops = []
 
     def add_laptop(self, laptop):
+        """
+        Add a laptop to the manager.
+
+        Args:
+            laptop (AbstractLaptop): The laptop object to be added.
+        """
         self.laptops.append(laptop)
 
     def find_all_with_weight_greater_than(self, weight):
+        """
+        Find all Ultrabooks with weight greater than the specified value.
+
+        Args:
+            weight (float): The weight threshold.
+
+        Returns:
+            list: A list of Ultrabook objects with weight greater than the specified value.
+        """
         return list(filter(lambda laptop: isinstance(laptop, Ultrabook) and laptop.weight > weight, self.laptops))
 
     def find_with_fans(self):
+        """
+        Find all gaming laptops with fans.
+
+        Returns:
+            list: A list of GamingLaptop objects with fans.
+        """
         return list(filter(lambda laptop: isinstance(laptop, GamingLaptop) and laptop.fan_count > 0, self.laptops))
 
     def print_laptops(self):
+        """Print the details of all laptops in the manager."""
         for laptop in self.laptops:
             print(laptop)
             print()
