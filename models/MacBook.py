@@ -1,4 +1,4 @@
-from models.lab1 import AbstractLaptop
+from models.laptop import AbstractLaptop
 
 
 class MacBook(AbstractLaptop):
