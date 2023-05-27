@@ -4,6 +4,11 @@ from models.laptop import AbstractLaptop
 class MacBook(AbstractLaptop):
     """A class representing a MacBook, inheriting from AbstractLaptop."""
 
+    def __repr__(self):
+        """Return a string representation of the MacBook object."""
+        return f"Model: {self.model}, Screen Size: {self.screen_size}, RAM: {self.ram}, Storage: {self.storage}, " \
+               f"Battery Life: {self.battery_life}, Color: {self.color}, Guarantee In Month: {self.guarantee}"
+
     def __init__(self, model="Unknown", screen_size=15.6, ram=8, storage=256, battery_life=5, color="grey",
                  guarantee=12):
         """
