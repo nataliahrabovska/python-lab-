@@ -12,7 +12,7 @@ class AbstractLaptopManager:
         """Initialize the AbstractLaptopManager object."""
         self.laptops = []
 
-    def addLaptop(self, laptop):
+    def add_laptop(self, laptop):
         """
         Add a laptop to the manager.
 
@@ -24,14 +24,14 @@ class AbstractLaptopManager:
     def main(self):
         """Run the main operations of the laptop manager."""
         # Adding laptops
-        self.addLaptop(Ultrabook("Lenovo", 13.3, 8, 512, 10, 1.1, 0.8))
-        self.addLaptop(Ultrabook("Xiaomi", 14.0, 16, 128, 7, 0.9, 2.0))
-        self.addLaptop(GamingLaptop("HP Gaming", 17.3, 16, 512, 6, "AMD", 3))
-        self.addLaptop(GamingLaptop("Victus", 15.6, 8, 512, 9, "RTX", 2))
-        self.addLaptop(MacBook("Air", 13.6, 8, 256, 4, "grey", 12))
-        self.addLaptop(MacBook("Air Pro", 13.3, 16, 128, 5, "silver", 24))
-        self.addLaptop(NoteBook("HP", 12.0, 16, 64, 3, "Ips", 3))
-        self.addLaptop(NoteBook("Asus", 16.0, 8, 128, 10, "oled", 4))
+        self.add_laptop(Ultrabook("Lenovo", 13.3, 8, 512, 10, 1.1, 0.8))
+        self.add_laptop(Ultrabook("Xiaomi", 14.0, 16, 128, 7, 0.9, 2.0))
+        self.add_laptop(GamingLaptop("HP Gaming", 17.3, 16, 512, 6, "AMD", 3))
+        self.add_laptop(GamingLaptop("Victus", 15.6, 8, 512, 9, "RTX", 2))
+        self.add_laptop(MacBook("Air", 13.6, 8, 256, 4, "grey", 12))
+        self.add_laptop(MacBook("Air Pro", 13.3, 16, 128, 5, "silver", 24))
+        self.add_laptop(NoteBook("HP", 12.0, 16, 64, 3, "Ips", 3))
+        self.add_laptop(NoteBook("Asus", 16.0, 8, 128, 10, "oled", 4))
 
         # Print all laptops
         for laptop in self.laptops:
