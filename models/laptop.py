@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class AbstractLaptop(ABC):
@@ -24,16 +24,6 @@ class AbstractLaptop(ABC):
         self.storage = storage
         self.battery_life = battery_life
 
-    @abstractmethod
-    def replace_battery(self, capacity_in_hours):
-        """
-        Abstract method to replace the laptop's battery.
-
-        Args:
-            capacity_in_hours (int): The new battery capacity in hours.
-        """
-        pass
-
     def add_ram(self, value):
         """
         Increase the RAM capacity of the laptop.
@@ -56,6 +46,27 @@ class AbstractLaptop(ABC):
         """Set the battery level of the laptop to 100."""
         self.battery_level = 100
 
+    def make_dict(self, type):
+        """
+        Create a dictionary containing the laptop's attributes of the specified type.
+
+        Args:
+            type (type): The type of attributes to include in the dictionary.
+
+        Returns:
+            dict: A dictionary containing the laptop's attributes of the specified type.
+        """
+        return {k: v for (k, v) in dict(self) if isinstance(v, type)}
+
+    def replace_battery(self, capacity_in_hours):
+        """
+        Replace the battery of the laptop.
+
+        Args:
+            capacity_in_hours (int): The new battery capacity in hours.
+        """
+        self.battery_life = capacity_in_hours
+
     def __str__(self):
         """
         Return a string representation of the laptop object.
@@ -77,3 +88,12 @@ class AbstractLaptop(ABC):
         if not AbstractLaptop.__instance:
             AbstractLaptop.__instance = AbstractLaptop()
         return AbstractLaptop.__instance
+
+    def start(self):
+        """
+        Start the laptop.
+
+        Returns:
+            str: A string indicating the laptop has started.
+        """
+        return f"Started in {100 / self.ram} seconds"
