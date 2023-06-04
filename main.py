@@ -1,5 +1,6 @@
-from manager.laptop_manager import AbstractLaptopManager
+from models.gaming_laptop import GamingLaptop
 
 if __name__ == "__main__":
-    manager = AbstractLaptopManager()
-    manager.main()
+    laptop = GamingLaptop()
+    laptop.battery_life = 100
+    laptop.charge()

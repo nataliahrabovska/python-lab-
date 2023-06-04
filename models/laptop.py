@@ -1,5 +1,8 @@
 from abc import ABC
 
+from decorators.decorators import logger
+from exceptions.exceptions import RedundantChargeException
+
 
 class AbstractLaptop(ABC):
     """A class representing a laptop with certain characteristics."""
@@ -42,9 +45,13 @@ class AbstractLaptop(ABC):
         """
         self.storage += value
 
+    @logger(RedundantChargeException, mode="console")
     def charge(self):
         """Set the battery level of the laptop to 100."""
-        self.battery_level = 100
+        if self.battery_life == 100:
+            raise RedundantChargeException()
+        else:
+            self.battery_level = 100
 
     def make_dict(self, type):
         """
