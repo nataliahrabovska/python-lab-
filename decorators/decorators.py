@@ -1,3 +1,6 @@
+import logging
+
+
 class CallCountDecorator:
     """A decorator that counts the number of times a function is called."""
 
@@ -63,3 +66,28 @@ class ArgumentsCountDecorator:
             return func(*args, **kwargs)
 
         return wrapper
+
+
+def logger(exception, mode):
+    logger = logging.getLogger("my_logger")
+    logger.setLevel(logging.ERROR)
+
+    if mode == "console":
+        console_handler = logging.StreamHandler()
+        logger.addHandler(console_handler)
+    elif mode == "file":
+        file_handler = logging.FileHandler("logs.log")
+        logger.addHandler(file_handler)
+    else:
+        raise ValueError("No matching mode")
+
+    def decorator(input_func):
+        def wrapper(*args, **kwargs):
+            try:
+                return input_func(*args, **kwargs)
+            except exception as e:
+                logger.error(str(e))
+
+        return wrapper
+
+    return decorator
